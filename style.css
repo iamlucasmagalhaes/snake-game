@@ -1,0 +1,27 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+:root{
+    --bg-color: #191919;
+    --bg-color-field: #111;
+    --white: #fff;
+    font-size: 62.5%
+}
+
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: var(--bg-color);
+    min-height: 100vh;
+    color: var(--white);
+}
+
+canvas{
+    background-color: var(--bg-color-field);
+}
