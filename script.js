@@ -1,6 +1,6 @@
 const canvas = document.querySelector('canvas') //seleciona o meu canvas 
 const ctx = canvas.getContext('2d') //define um contexto
-const size = 30 //tamanho da fruta
+const size = 30 //tamanho da fruta 
 //cria a minnha cobra
 const snake = [
     //o valor muda de 30 em 30, pois o tamanho da fruta é 30
@@ -50,11 +50,29 @@ const moveSnake = () => {
     snake.shift()
 }
 
+//função para desnehar grid no mapa
+const dawnGrid = () => {
+    ctx.lineWidth =  1 //definindo o tamanho da linha
+    ctx.strokeStyle =  "#191919" //definindo a cor da linha
+
+    for(let i = 30; i < canvas.width; i+= 30){
+        ctx.beginPath() //define onde vai começar o desenho
+        ctx.lineTo(i, 0) //definindo onde a linha vai começar
+        ctx.lineTo(i, 600) //definindo onde a linha vai terminar
+        ctx.stroke() //cria o desenho da linha
+
+        ctx.beginPath()
+        ctx.lineTo(0, i)
+        ctx.lineTo(600, i)
+        ctx.stroke()
+    }
+}
+
 //cria o loop do movimento da cobra
 const gameLoop = () => {
     clearInterval(loopId)
     ctx.clearRect(0, 0, 600, 600) //limpa a tela 
-
+    dawnGrid() //deseha o grid
     drawSnake() //desenha a cobra
     moveSnake() //move a cobra
 
