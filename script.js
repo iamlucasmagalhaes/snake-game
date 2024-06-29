@@ -8,7 +8,7 @@ const snake = [
     {x:230, y:200},
 ] 
 
-let direction
+let direction, loopId
 
 //desenha a cobra na tela
 const drawSnake = () => {
@@ -51,9 +51,36 @@ const moveSnake = () => {
     snake.shift()
 }
 
-setInterval(() => {
-    ctx.clearRect(0, 0, 600, 600)
-    
-    drawSnake()
-    moveSnake()
-}, 300)
+//cria o loop do movimento da cobra
+const gameLoop = () => {
+    clearInterval(loopId)
+    ctx.clearRect(0, 0, 600, 600) //limpa a tela 
+
+    drawSnake() //desenha a cobra
+    moveSnake() //move a cobra
+
+    //depois do tempo estabelecido, a função chama ela mesma novamente
+    loopId = setTimeout(() => {
+        gameLoop()
+    }, 300)
+}
+
+gameLoop()
+
+document.addEventListener("keydown", ({key}) => {
+    if(key === "ArrowRight" && direction !== "left"){
+        direction = "right"
+    }
+
+    if(key === "ArrowLeft" && direction !== "right"){
+        direction = "left"
+    }
+
+    if(key === "ArrowUp" && direction !== "down"){
+        direction = "up"
+    }
+
+    if(key === "ArrowDown" && direction !== "up"){
+        direction = "down"
+    }
+})
