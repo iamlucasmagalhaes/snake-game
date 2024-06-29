@@ -4,8 +4,7 @@ const size = 30 //tamanho da fruta
 //cria a minnha cobra
 const snake = [
     //o valor muda de 30 em 30, pois o tamanho da fruta é 30
-    {x:200, y:200},
-    {x:230, y:200},
+    {x:270, y:240},
 ] 
 
 let direction, loopId
@@ -67,6 +66,7 @@ const gameLoop = () => {
 
 gameLoop()
 
+//adiciona um ouvidor para as teclas pressionadas
 document.addEventListener("keydown", ({key}) => {
     if(key === "ArrowRight" && direction !== "left"){
         direction = "right"
