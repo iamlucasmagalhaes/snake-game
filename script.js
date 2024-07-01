@@ -7,6 +7,12 @@ const snake = [
     {x:270, y:240},
 ] 
 
+const food = {
+    x:90,
+    y:90,
+    color: "yellow"
+}
+
 let direction, loopId
 
 //desenha a cobra na tela
@@ -50,6 +56,11 @@ const moveSnake = () => {
     snake.shift()
 }
 
+const drawFood = () => {
+    ctx.fillStyle = food.color
+    ctx.fillRect(food.x, food.y, size, size)
+}
+
 //função para desnehar grid no mapa
 const dawnGrid = () => {
     ctx.lineWidth =  1 //definindo o tamanho da linha
@@ -73,6 +84,7 @@ const gameLoop = () => {
     clearInterval(loopId)
     ctx.clearRect(0, 0, 600, 600) //limpa a tela 
     dawnGrid() //deseha o grid
+    drawFood()
     drawSnake() //desenha a cobra
     moveSnake() //move a cobra
 
