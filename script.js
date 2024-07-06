@@ -7,9 +7,14 @@ const snake = [
     {x:270, y:240},
 ] 
 
+const randomNumber = (min, max) => {
+    return Math.round(Math.random() * (max - min) + min)
+}
+
+//criando comida
 const food = {
-    x:90,
-    y:90,
+    x: randomNumber(0, 570),
+    y: randomNumber(0, 570),
     color: "yellow"
 }
 
@@ -56,9 +61,15 @@ const moveSnake = () => {
     snake.shift()
 }
 
+//desenhando a comida
 const drawFood = () => {
+    const {x, y, color} = food //desestruturando o objeto comida
+
+    ctx.shadowColor = color
+    ctx.shadowBlur = 6
     ctx.fillStyle = food.color
     ctx.fillRect(food.x, food.y, size, size)
+    ctx.shadowBlur = 0
 }
 
 //função para desnehar grid no mapa
