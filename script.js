@@ -7,20 +7,31 @@ const snake = [
     {x:270, y:240},
 ] 
 
+//gera um número aleatorio que vai ser usando na posição da comida e na cor
 const randomNumber = (min, max) => {
     return Math.round(Math.random() * (max - min) + min)
 }
 
+//gera uma posição aleatoria para a comida
 const randomPosition = () => {
     const number = randomNumber(0, canvas.width - size)
     return Math.round(number / 30) * 30
 }
 
+//gera cor aleatoria para a comida
+const randomColor = () => {
+    const red = randomNumber(0, 255) //vai gerar um numero aletório
+    const green = randomNumber(0, 255)
+    const blue = randomNumber(0, 255)
+
+    return `rgb(${red}, ${green}, ${blue})`
+}
+
 //criando comida
 const food = {
-    x: randomNumber(),
-    y: randomNumber(),
-    color: "yellow"
+    x: randomPosition(),
+    y: randomPosition(),
+    color: randomColor()
 }
 
 let direction, loopId
