@@ -11,6 +11,11 @@ const randomNumber = (min, max) => {
     return Math.round(Math.random() * (max - min) + min)
 }
 
+const randomPosition = () => {
+    const number = randomNumber(0, canvas.width - size)
+    return Math.round(number / 30) * 30
+}
+
 //criando comida
 const food = {
     x: randomNumber(0, 570),
