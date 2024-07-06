@@ -18,8 +18,8 @@ const randomPosition = () => {
 
 //criando comida
 const food = {
-    x: randomNumber(0, 570),
-    y: randomNumber(0, 570),
+    x: randomNumber(),
+    y: randomNumber(),
     color: "yellow"
 }
 
