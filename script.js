@@ -106,14 +106,24 @@ const dawnGrid = () => {
     }
 }
 
+//função para verificar se a cobra comeu a comida
+const chackEat = () => {
+    const head = snake[snake.length - 1]
+
+    if(head.x == food.x && head.y == food.y){
+        snake.push(head)
+    }
+}
+
 //cria o loop do movimento da cobra
 const gameLoop = () => {
     clearInterval(loopId)
     ctx.clearRect(0, 0, 600, 600) //limpa a tela 
     dawnGrid() //deseha o grid
-    drawFood()
+    drawFood() //desenha a comida
     drawSnake() //desenha a cobra
     moveSnake() //move a cobra
+    chackEat() //verifica se a cobra comeu a comida
 
     //depois do tempo estabelecido, a função chama ela mesma novamente
     loopId = setTimeout(() => {
