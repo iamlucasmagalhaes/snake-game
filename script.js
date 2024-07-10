@@ -6,6 +6,11 @@ const size = 30 //tamanho da fruta
 const snake = [
     //o valor muda de 30 em 30, pois o tamanho da fruta é 30
     {x:270, y:240},
+    {x:300, y:240},
+    {x:330, y:240},
+    {x:360, y:240},
+    {x:390, y:240},
+    {x:420, y:240},
 ] 
 
 //gera um número aleatorio que vai ser usando na posição da comida e na cor
@@ -130,6 +135,22 @@ const chackEat = () => {
     }
 }
 
+const checkCollision = () => {
+    const head = snake[snake.length - 1]
+    const canvasLimit = canvas.width + 1
+    const neckIndex = snake.length - 1
+    //colisão com a parede
+    const wallCollision = head.x < 0 || head.x >= canvasLimit || head.y < 0 || head.y >= canvasLimit
+
+    const selfCollision = snake.find((position, index) => {
+        return index < neckIndex && position.x == head.x && position.y == head.y
+    })
+
+    if(wallCollision || selfCollision){
+        alert('você perdeu')
+    }
+}
+
 //cria o loop do movimento da cobra
 const gameLoop = () => {
     clearInterval(loopId)
@@ -138,6 +159,7 @@ const gameLoop = () => {
     drawFood() //desenha a comida
     drawSnake() //desenha a cobra
     moveSnake() //move a cobra
+    checkCollision()
     chackEat() //verifica se a cobra comeu a comida
 
     //depois do tempo estabelecido, a função chama ela mesma novamente
