@@ -137,8 +137,8 @@ const chackEat = () => {
 
 const checkCollision = () => {
     const head = snake[snake.length - 1]
-    const canvasLimit = canvas.width + 1
-    const neckIndex = snake.length - 1
+    const canvasLimit = canvas.width - 1 //cria um limite para a cobra se mover
+    const neckIndex = snake.length - 2 //retira a cabeça da cobra para a colisão com ela mesma
     //colisão com a parede
     const wallCollision = head.x < 0 || head.x >= canvasLimit || head.y < 0 || head.y >= canvasLimit
 
@@ -147,8 +147,12 @@ const checkCollision = () => {
     })
 
     if(wallCollision || selfCollision){
-        alert('você perdeu')
+        gameOver()
     }
+}
+
+const gameOver = () => {
+    direction = undefined
 }
 
 //cria o loop do movimento da cobra
