@@ -112,6 +112,10 @@ const chackEat = () => {
 
     if(head.x == food.x && head.y == food.y){
         snake.push(head)
+
+        food.x = randomPosition(),
+        food.y = randomPosition(),
+        food.color = randomColor()
     }
 }
 
