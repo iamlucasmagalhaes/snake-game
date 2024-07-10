@@ -1,4 +1,5 @@
 const canvas = document.querySelector('canvas') //seleciona o meu canvas 
+const audio = new Audio('assets/audio.mp3')
 const ctx = canvas.getContext('2d') //define um contexto
 const size = 30 //tamanho da fruta 
 //cria a minnha cobra
@@ -112,7 +113,9 @@ const chackEat = () => {
 
     if(head.x == food.x && head.y == food.y){
         snake.push(head)
-
+        
+        audio.play()
+        
         let x = randomPosition()
         let y = randomPosition()
 
