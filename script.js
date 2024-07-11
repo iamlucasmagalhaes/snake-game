@@ -1,6 +1,10 @@
 const canvas = document.querySelector('canvas') //seleciona o meu canvas 
 const audio = new Audio('assets/audio.mp3')
 const ctx = canvas.getContext('2d') //define um contexto
+const score = document.querySelector('.score-value') //seleciona o valor do score
+const finalScore = document.querySelector('.final-score > span') //seleciona o span dentro do que está dentra da minha tag da classe final-score
+const menu = document.querySelector('menu-score')
+const buttonPlay = document.querySelector('btn-screen')
 const size = 30 //tamanho da fruta 
 //cria a minnha cobra
 const snake = [
@@ -11,7 +15,7 @@ const snake = [
     {x:360, y:240},
     {x:390, y:240},
     {x:420, y:240},
-] 
+]
 
 //gera um número aleatorio que vai ser usando na posição da comida e na cor
 const randomNumber = (min, max) => {
