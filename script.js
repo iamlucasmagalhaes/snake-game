@@ -122,7 +122,7 @@ const chackEat = () => {
 
     if(head.x == food.x && head.y == food.y){
         snake.push(head)
-        
+        incrementScore()
         audio.play()
         
         let x = randomPosition()
@@ -157,6 +157,11 @@ const checkCollision = () => {
 
 const gameOver = () => {
     direction = undefined
+}
+
+//aumenta a pontuação após checar se a cobra comeu a comida
+const incrementScore = () => {
+    score.innerText = parseInt(score.innerText) + 10
 }
 
 //cria o loop do movimento da cobra
