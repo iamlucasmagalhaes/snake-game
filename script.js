@@ -160,6 +160,8 @@ const gameOver = () => {
     direction = undefined
 
     menu.style.display = "flex"
+    finalScore.innerText = score.innerText
+    canvas.style.filter = "blur(2px)"
 }
 
 //aumenta a pontuação após checar se a cobra comeu a comida
