@@ -7,14 +7,9 @@ const menu = document.querySelector('.menu-screen')
 const buttonPlay = document.querySelector('.btn-play')
 const size = 30 //tamanho da fruta 
 //cria a minnha cobra
-const snake = [
+let snake = [
     //o valor muda de 30 em 30, pois o tamanho da fruta é 30
-    {x:270, y:240},
-    {x:300, y:240},
-    {x:330, y:240},
-    {x:360, y:240},
-    {x:390, y:240},
-    {x:420, y:240},
+    {x:270, y:240}
 ]
 
 //gera um número aleatorio que vai ser usando na posição da comida e na cor
@@ -205,4 +200,13 @@ document.addEventListener("keydown", ({key}) => {
     if(key === "ArrowDown" && direction !== "up"){
         direction = "down"
     }
+})
+
+//evento para reiniciar o jogo
+buttonPlay.addEventListener('click', () => {
+    score.innerText = "00" //reinicia a ponntuação
+    menu.style.display = "none" //remove a tela de game over
+    canvas.style.filter = "none" //remove o blur
+
+    snake = [{x:270, y:240}]
 })
