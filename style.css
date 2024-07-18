@@ -73,3 +73,15 @@ canvas{
     gap: .5rem;
     cursor: pointer;
 }
+
+/* Estilos para telas menores */
+@media screen and (max-width: 768px) {
+    body{
+        width: 80%;
+        margin: auto;
+    }
+
+    canvas{
+        width: 99%;
+    }
+}
